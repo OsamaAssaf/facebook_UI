@@ -1,4 +1,3 @@
-import 'package:facebookui/models/post_model.dart';
 import 'package:facebookui/view_models/home_view_model.dart';
 import 'package:facebookui/widgest/home_widgets/posts_widget.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +30,13 @@ class HomeView extends StatelessWidget {
                     Expanded(
                       child: TextButton(
                         onPressed: () {},
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  side: const BorderSide(color: Colors.grey)),
+                            ),
+                            alignment: Alignment.centerLeft),
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
@@ -38,14 +44,6 @@ class HomeView extends StatelessWidget {
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  side: const BorderSide(color: Colors.grey)),
-                            ),
-                            alignment: Alignment.centerLeft),
                       ),
                     ),
                   ],
@@ -122,22 +120,20 @@ class HomeView extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.blue.withOpacity(0.2)),
+                        elevation: MaterialStateProperty.all<double>(0.0),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        ),
+                      ),
                       child: Text(
                         'Create Room',
                         style: TextStyle(
                             color: CustomColors.blueColor,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.blue.withOpacity(0.2)),
-                        elevation: MaterialStateProperty.all<double>(0.0),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0)),
-                        ),
                       ),
                     ),
                     const SizedBox(
@@ -151,15 +147,13 @@ class HomeView extends StatelessWidget {
                           itemCount: _homeViewModel.friendsProfileImage.length,
                           itemBuilder: (ctx, index) {
                             return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 4.0),
                               child: Stack(
                                 children: [
                                   GestureDetector(
                                     child: CircleAvatar(
                                       backgroundImage: NetworkImage(
-                                        _homeViewModel
-                                            .friendsProfileImage[index],
+                                        _homeViewModel.friendsProfileImage[index],
                                       ),
                                       radius: 18.0,
                                     ),
@@ -168,19 +162,17 @@ class HomeView extends StatelessWidget {
                                           context: context,
                                           builder: (ctx) => AlertDialog(
                                                 content: Image.network(
-                                                    _homeViewModel
-                                                            .friendsProfileImage[
-                                                        index]),
+                                                    _homeViewModel.friendsProfileImage[index]),
                                               ));
                                     },
                                   ),
                                   Positioned(
+                                    bottom: 1,
+                                    right: 1,
                                     child: CircleAvatar(
                                       backgroundColor: CustomColors.greenColor,
                                       radius: 6,
                                     ),
-                                    bottom: 1,
-                                    right: 1,
                                   )
                                 ],
                               ),

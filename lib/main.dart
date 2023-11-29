@@ -5,10 +5,12 @@ import 'package:provider/provider.dart';
 import 'views/main_view.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (_) => MainViewModel(),
-    child: const MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => MainViewModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,9 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:MainView(),
+      home: MainView(),
     );
   }
 }
-
-

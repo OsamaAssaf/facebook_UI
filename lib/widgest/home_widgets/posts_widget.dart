@@ -22,8 +22,7 @@ class PostsWidget extends StatelessWidget {
             ),
             title: Text(
               postModel.postAuthorName,
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
             ),
             subtitle: const Text('4m'),
             trailing: IconButton(
@@ -43,17 +42,15 @@ class PostsWidget extends StatelessWidget {
                 style: const TextStyle(fontSize: 18.0),
               ),
             ),
-          if (postModel.imageContent != null)
-            Center(child: Image.network(postModel.imageContent!)),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          if (postModel.imageContent != null) Center(child: Image.network(postModel.imageContent!)),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('479'),
+                Text('479'),
                 Row(
-                  children: const [
+                  children: [
                     Text('40 Comments'),
                     Text('.'),
                     Text('10 Shares'),

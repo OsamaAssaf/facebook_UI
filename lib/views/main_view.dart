@@ -2,7 +2,7 @@ import 'package:facebookui/res/colors/colors.dart';
 import 'package:facebookui/view_models/main_view_model.dart';
 import 'package:facebookui/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +10,10 @@ class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
 
   @override
-  _MainViewState createState() => _MainViewState();
+  MainViewState createState() => MainViewState();
 }
 
-class _MainViewState extends State<MainView> with TickerProviderStateMixin {
+class MainViewState extends State<MainView> with TickerProviderStateMixin {
   MainViewModel mainViewModel = MainViewModel();
   late TabController _tabController;
 
@@ -25,9 +25,8 @@ class _MainViewState extends State<MainView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    int _numberOfMessages =
-        Provider.of<MainViewModel>(context).numberOfMessages;
-    bool _hasMessages = _numberOfMessages > 0 ? true : false;
+    int numberOfMessages = Provider.of<MainViewModel>(context).numberOfMessages;
+    bool hasMessages = numberOfMessages > 0 ? true : false;
     return DefaultTabController(
       length: 6,
       child: Scaffold(
@@ -65,9 +64,9 @@ class _MainViewState extends State<MainView> with TickerProviderStateMixin {
                           backgroundColor: CustomColors.lightGreyColor,
                           child: IconButton(
                             onPressed: () {},
-                            icon: Badge(
-                              badgeContent: Text('$_numberOfMessages'),
-                              showBadge: _hasMessages,
+                            icon: badges.Badge(
+                              badgeContent: Text('$numberOfMessages'),
+                              showBadge: hasMessages,
                               child: const Icon(
                                 Icons.message_outlined,
                                 color: Colors.black,

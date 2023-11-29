@@ -54,6 +54,12 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
+                        decoration: const BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 20.0,
+                          ),
+                        ]),
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 25.0,
@@ -66,12 +72,6 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                             ),
                           ),
                         ),
-                        decoration: const BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 20.0,
-                          ),
-                        ]),
                       ),
                       const SizedBox(
                         height: 8.0,
@@ -112,15 +112,15 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                       ),
                     ),
                     ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(20.0),
+                      ),
                       child: Image.network(
                         _homeViewModel.userImage,
                         height: 120,
                         width: 120,
                         fit: BoxFit.cover,
-                      ),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20.0),
-                        topRight: Radius.circular(20.0),
                       ),
                     ),
                     Positioned(
@@ -179,8 +179,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                         height: 45.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                              color: CustomColors.blueColor, width: 2.0),
+                          border: Border.all(color: CustomColors.blueColor, width: 2.0),
                         ),
                         child: CircleAvatar(
                           backgroundImage: NetworkImage(
